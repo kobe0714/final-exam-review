@@ -1,0 +1,22 @@
+% Table styling for Pandoc PDF output
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{longtable}
+\usepackage{array}
+
+% Professional table style
+\definecolor{tableheader}{HTML}{003366}
+\definecolor{tablerow}{HTML}{F0F4FA}
+\definecolor{tablerowalt}{HTML}{FFFFFF}
+
+% Make table headers bold with dark background and white text
+\renewcommand{\thead}[1]{\textcolor{white}{\textbf{#1}}}
+
+% Reduce table font size slightly
+\AtBeginEnvironment{longtable}{\small}
+\AtBeginEnvironment{tabular}{\small}
+
+% Add space above and below tables
+\setlength{\abovetopsep}{0.5em}
+\setlength{\belowbottomsep}{0.5em}

@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+\usepackage[UTF8,heading = true]{ctex}
+\usepackage{geometry}
+\usepackage{amsfonts, amssymb}
+\xeCJKsetup{CJKmath=true} 
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=25mm,
+  bottom=25mm
+}
+
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{fontspec}    
+\usepackage{csquotes} % Added for proper quote support
+% \setmainfont{Charter}  -- not available on this system, using ctex defaults
+\setmainfont{SimSun}
+
+% \usepackage{unicode-math}  -- XITS Math not available, using amsmath
+\usepackage{float}
+% \setmathfont{XITS Math}
+
+\usepackage{fancybox}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+\usepackage{listings} % Use listings instead of minted
+\usepackage[most]{tcolorbox} % Load tcolorbox with most options
+\usepackage{mdframed} % Add mdframed
+\usepackage{tikz} % Add TikZ
+\usepackage{adjustbox}
+
+\definecolor{bg}{rgb}{0.92,0.95,1.0} % Lighter blue fill
+\definecolor{borderblue}{rgb}{0.4,0.4,1.0} % Blue border
+\definecolor{commentcolor}{rgb}{0.4,0.85,0.4} % Softer green comment color
+
+\newenvironment{Shaded}{%
+  \begin{tcolorbox}[
+    enhanced,
+    arc=8pt,
+    outer arc=8pt,
+    colback=bg,
+    colframe=borderblue,
+    boxrule=1pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    boxsep=0pt,
+    width=\linewidth,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\usepackage{float} % Add this line
+\usepackage{placeins} % Add this line
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{amsmath}
+% \usepackage{amssymb}
+  % \usepackage{mathspec}
+% \usepackage{unicode-math}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\setkeys{Gin}{width=\linewidth, keepaspectratio}
+
+\newfontfamily\consolasfont{Consola}[
+    Extension = .ttf,
+    UprightFont = *,
+    BoldFont = *b,
+    ItalicFont = *i,
+    BoldItalicFont = *z
+]
+
+\lstset{
+    basicstyle=\consolasfont,  % Changed to use Consolas
+    backgroundcolor=\color{bg},
+    lineskip=2pt,
+    frame=single,
+    framesep=1.5mm,
+    rulecolor=\color{borderblue}, % Blue border
+    numbers=left,
+    numberstyle=\small\color{gray}, % Changed from \tiny to \small
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    commentstyle=\color{commentcolor}\itshape,
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,  % Ensure lines break within margins
+    breakatwhitespace=true, % Allow breaking at whitespace
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow}},
+    escapeinside={(*@}{@*)},
+    literate={-}{{\textendash}}1
+}
+
+\usepackage{etoolbox} % Add etoolbox package
+
+\makeatletter
+\g@addto@macro\texttt{\allowbreak}
+\makeatother
+
+% Custom blockquote environment for markdown quotes
+\newtcolorbox{pandocBlockQuote}{
+  enhanced,
+  breakable,
+  arc=0pt,
+  outer arc=0pt,
+  colback=white,
+  colframe=gray!30,
+  boxrule=0pt,
+  leftrule=3pt,
+  left=15pt,
+  right=5pt,
+  top=5pt,
+  bottom=5pt,
+  bottomrule=0pt,
+  toprule=0pt,
+  rightrule=0pt
+}
+
+% Connect pandoc's BlockQuote environment to our custom one
+\renewenvironment{quote}{\begin{pandocBlockQuote}}{\end{pandocBlockQuote}}
+
+% For direct pandoc integration
+\let\oldquote\quote
+\let\oldendquote\endquote
+\renewenvironment{quote}{\begin{pandocBlockQuote}}{\end{pandocBlockQuote}}
+
+\newcommand{\passthrough}[1]{#1}
+\newcommand{\pandocbounded}[1]{#1}
+
+\captionsetup[figure]{justification=centering}
+\captionsetup[table]{justification=centering}
+
+% 调整浮动体参数
+\setcounter{topnumber}{6}% 每页顶部最大浮动体数量
+\setcounter{bottomnumber}{3}% 每页底部最大浮动体数量
+\setcounter{totalnumber}{6}% 每页浮动体总数量
+\renewcommand{\topfraction}{0.95}% 页面顶部浮动体比例
+\renewcommand{\bottomfraction}{0.5}% 页面底部浮动体比例
+\renewcommand{\floatpagefraction}{0.9}% 浮动体页比例
+\renewcommand{\textfraction}{0.05}% 正文比例
+
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
+$if(using_title)$
+    \maketitle
+$endif$
+
+$if(using_table_of_content)$
+\tableofcontents 
+$endif$
+
+$body$
+
+\end{document}

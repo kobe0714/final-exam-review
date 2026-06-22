@@ -1,0 +1,62 @@
+% Enhanced Chinese PDF template for Pandoc
+% Based on dywsy21's Charter font approach + sunquartex-kai's structure
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+
+% ---- Fonts ----
+\setmainfont{SimSun}[Script=CJK]
+\setCJKmainfont{SimHei}[BoldFont=SimHei]
+\setCJKsansfont{SimHei}
+\setCJKmonofont{SimHei}
+
+% ---- Page layout ----
+\geometry{left=2.2cm, right=2.2cm, top=2.5cm, bottom=2cm}
+
+% ---- Chapter/section styling ----
+\titleformat{\chapter}[display]
+  {\normalfont\Huge\bfseries\color{black!80}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black!60}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{black!40}}
+  {\thesubsection}{1em}{}
+
+% ---- Headers/footers ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray}International Finance - Final Review}
+\fancyhead[R]{\small\color{gray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
+
+% ---- Title page ----
+\usepackage{titling}
+\pretitle{\begin{center}\Huge\bfseries}
+\posttitle{\par\end{center}\vskip 1cm}
+\preauthor{\begin{center}\large}
+\postauthor{\end{center}}
+\predate{\begin{center}\large}
+\postdate{\end{center}}
+
+% ---- Code blocks ----
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{gray!5},
+  frame=single,
+  framerule=0.5pt,
+  rulecolor=\color{gray!40},
+  breaklines=true
+}
+
+% ---- Links ----
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black!60,
+  urlcolor=blue!60!black
+}
